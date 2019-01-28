@@ -1,0 +1,29 @@
+{
+  "name": "news-comments",
+  "version": "1.0.0",
+  "description": "comment on the news",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/revanite07/News-Comments.git"
+  },
+  "author": "kelan moffatt",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/revanite07/News-Comments/issues"
+  },
+  "homepage": "https://github.com/revanite07/News-Comments#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.4",
+    "mongojs": "^2.6.0",
+    "mongoose": "^5.4.6",
+    "morgan": "^1.9.1",
+    "path": "^0.12.7"
+  }
+}
