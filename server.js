@@ -3,7 +3,8 @@ var logger = require("morgan");
 var mongoose = require("mongoose");
 var cheerio = require("cheerio");
 var db = require("./models");
-var PORT = 3000;
+var HOST = '0.0.0.0';
+var PORT = process.env.PORT || 3000;
 var app = express();
 
 
@@ -12,8 +13,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://localhost/infowarsdb", { useNewUrlParser: true });
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/infowarsdb";
 
+mongoose.connect(MONGODB_URI);
 app.get("/", function(req, res) {
     res.sendFile(path.join(__dirname + "./public/index.html"));
   });
@@ -204,6 +206,6 @@ app.post("/articles/:id", function(req, res) {
 });
 
 
-app.listen(PORT, function() {
+app.listen(PORT, HOST, function() {
   console.log("App running on port " + PORT + "!");
 });

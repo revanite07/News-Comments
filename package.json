@@ -19,6 +19,7 @@
   "homepage": "https://github.com/revanite07/News-Comments#readme",
   "dependencies": {
     "axios": "^0.18.0",
+    "babel": "^6.23.0",
     "cheerio": "^1.0.0-rc.2",
     "express": "^4.16.4",
     "mongojs": "^2.6.0",
