@@ -3,7 +3,7 @@ var logger = require("morgan");
 var mongoose = require("mongoose");
 var cheerio = require("cheerio");
 var db = require("./models");
-var HOST = '0.0.0.0';
+
 var PORT = process.env.PORT || 3000;
 var app = express();
 
@@ -22,7 +22,7 @@ app.get("/", function(req, res) {
   
   app.post("/submit", function(req, res) {
     console.log(req.body);
-    db.notes.insert(req.body, function(error, saved) {
+    db.Note.insert(req.body, function(error, saved) {
       if (error) {
         console.log(error);
       }
@@ -35,7 +35,7 @@ app.get("/", function(req, res) {
 
   app.get("/all", function(req, res) {
  
-    db.notes.find({}, function(error, found) {
+    db.Note.find({}, function(error, found) {
 
       if (error) {
         console.log(error);
@@ -49,7 +49,7 @@ app.get("/", function(req, res) {
 
   app.get("/find/:id", function(req, res) {
 
-    db.notes.findOne(
+    db.Note.findOne(
       {
     
         _id: mongojs.ObjectId(req.params.id)
@@ -70,7 +70,7 @@ app.get("/", function(req, res) {
 
   app.post("/update/:id", function(req, res) {
 
-    db.notes.update(
+    db.Note.update(
       {
         _id: mongojs.ObjectId(req.params.id)
       },
@@ -98,7 +98,7 @@ app.get("/", function(req, res) {
 
   app.get("/delete/:id", function(req, res) {
     
-    db.notes.remove(
+    db.Note.remove(
       {
         _id: mongojs.ObjectID(req.params.id)
       },
@@ -120,7 +120,7 @@ app.get("/", function(req, res) {
 
   app.get("/clearall", function(req, res) {
 
-    db.notes.remove({}, function(error, response) {
+    db.Note.remove({}, function(error, response) {
 
       if (error) {
         console.log(error);
@@ -206,6 +206,7 @@ app.post("/articles/:id", function(req, res) {
 });
 
 
-app.listen(PORT, HOST, function() {
+
+app.listen(PORT, function() {
   console.log("App running on port " + PORT + "!");
 });
